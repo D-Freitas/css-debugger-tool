@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild src/index.js --minify --bundle --sourcemap --target=chrome58,firefox57,safari11,edge16 --outfile=dist/bundle.js"
+    "build": "esbuild src/index.js --bundle --sourcemap --outfile=dist/bundle.js"
   },
   "keywords": [],
   "author": "",
