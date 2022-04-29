@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "esbuild src/index.js --minify --bundle --sourcemap --target=chrome58,firefox57,safari11,edge16 --outfile=dist/bundle.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "git-commit-msg-linter": "^4.1.2"
+  },
+  "dependencies": {
+    "esbuild": "^0.14.38"
   }
 }
