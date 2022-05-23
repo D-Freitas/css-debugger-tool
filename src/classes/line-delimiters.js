@@ -2,7 +2,7 @@ class LineDelimiters {
   constructor (Events, DataConverter, colors) {
     const events = new Events()
     this.addLinesDelimiters = events.addLinesDelimiters
-    this.removeLinesDelmiters = events.removeLinesDelmiters
+    this.removeLinesDelimiters = events.removeLinesDelmiters
 
     const dataConverter = new DataConverter()
     this.convertHexToRgba = dataConverter.convertHexToRgba
@@ -12,23 +12,33 @@ class LineDelimiters {
 
   init () {
     this.bringPageElements()
+    this.bringColors()
     this.insertEventsToElements()
   }
 
   bringPageElements () {
-    const elements = document.getElementsByTagName('*')
-    this.elements = elements
+    this.elements = document.querySelectorAll('*')
+  }
+
+  bringColors () {
+    const elements = Array.from(this.elements)
+    let targetIndex = 0
+    elements.forEach((element, index) => {
+      if (targetIndex >= this.colors.length) {
+        targetIndex = 0
+      }
+      this.colors[index] = this.colors[targetIndex]
+      targetIndex++
+    })
   }
 
   insertEventsToElements () {
-    Array.from(this.elements).forEach(element => {
-      const randomIndex = Math.floor(Math.random() * (50 - 0)) + 0
-
+    Array.from(this.elements).forEach((element, i) => {
       element.onmouseover = () => {
-        this.addLinesDelimiters(element, this.convertHexToRgba(this.colors[randomIndex]))
+        this.addLinesDelimiters(element, this.convertHexToRgba(this.colors[i]))
       }
       element.onmouseleave = () => {
-        this.removeLinesDelmiters(element, this.convertHexToRgba(this.colors[randomIndex]))
+        this.removeLinesDelimiters(element, this.convertHexToRgba(this.colors[i]))
       }
     })
   }
