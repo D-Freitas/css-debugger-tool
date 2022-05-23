@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild src/index.js --minify --bundle --sourcemap --outfile=dist/bundle.js"
+    "build": "esbuild src/index.js --minify --bundle --sourcemap --outfile=dist/bundle.js",
+    "lint": "eslint src/",
+    "lint:fix": "npm run lint -- --fix",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +18,9 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.2.0",
     "eslint-plugin-promise": "^6.0.0",
-    "git-commit-msg-linter": "^4.1.2"
+    "git-commit-msg-linter": "^4.1.2",
+    "husky": "^8.0.1",
+    "lint-staged": "^12.4.1"
   },
   "dependencies": {
     "esbuild": "^0.14.38"
