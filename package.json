@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild src/index.js --bundle --sourcemap --outfile=dist/bundle.js"
+    "build": "esbuild src/index.js --minify --bundle --sourcemap --outfile=dist/bundle.js"
   },
   "keywords": [],
   "author": "",
