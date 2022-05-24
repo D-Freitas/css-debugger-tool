@@ -1,44 +1,55 @@
+import { colors } from '../mocks/line-colors.json'
+
 class LineDelimiters {
-  constructor (Events, DataConverter, colors) {
-    const events = new Events()
-    this.addLinesDelimiters = events.addLinesDelimiters
-    this.removeLinesDelimiters = events.removeLinesDelmiters
-
-    const dataConverter = new DataConverter()
-    this.convertHexToRgba = dataConverter.convertHexToRgba
-
+  constructor (Events, States, DataConverter) {
+    this.events = new Events()
+    this.dataConverter = new DataConverter()
+    this.states = new States()
     this.colors = colors
+    this.colorsRgbaWithLine = colors.map(color => {
+      return `${this.dataConverter.convertHexToRgba(color)} 0px 0px 0px 4px`
+    })
   }
 
   init () {
-    this.bringPageElements()
-    this.bringColors()
-    this.insertEventsToElements()
+    this.#bringPageElements()
+    this.#bringColors()
+    this.#insertEventsToElements()
   }
 
-  bringPageElements () {
-    this.elements = document.querySelectorAll('*')
+  disable () {
+    Array.from(this.elements).forEach(element => {
+      element.onmouseover = element.onmouseleave = null
+      const isElementShadow = element.style.boxShadow !== null
+      const elementHasLine = this.colorsRgbaWithLine.includes(element.style.boxShadow)
+      if (isElementShadow && elementHasLine) { element.style.boxShadow = null }
+    })
+    this.states.runDebugger.forEach((state, i) => {
+      this.states.runDebugger[i] = false
+    })
   }
 
-  bringColors () {
+  #bringPageElements () {
+    this.elements = document.body.querySelectorAll('*')
+  }
+
+  #bringColors () {
     const elements = Array.from(this.elements)
     let targetIndex = 0
     elements.forEach((element, index) => {
-      if (targetIndex >= this.colors.length) {
-        targetIndex = 0
-      }
+      if (targetIndex >= this.colors.length) { targetIndex = 0 }
       this.colors[index] = this.colors[targetIndex]
       targetIndex++
     })
   }
 
-  insertEventsToElements () {
+  #insertEventsToElements () {
     Array.from(this.elements).forEach((element, i) => {
       element.onmouseover = () => {
-        this.addLinesDelimiters(element, this.convertHexToRgba(this.colors[i]))
+        this.events.addLinesDelimiters(element, this.dataConverter.convertHexToRgba(this.colors[i]))
       }
       element.onmouseleave = () => {
-        this.removeLinesDelimiters(element, this.convertHexToRgba(this.colors[i]))
+        this.events.removeLinesDelmiters(element, this.dataConverter.convertHexToRgba(this.colors[i]))
       }
     })
   }
