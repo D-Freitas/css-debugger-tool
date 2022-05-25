@@ -4,7 +4,7 @@
 
 ## How to install?
 - Install [Tampermonkey](https://www.tampermonkey.net/) in your browser
-- Install [CSS Debugger Tool](https://greasyfork.org/en/scripts/445448-css-debugger-tool) in your Tampermonkey
+- Install [CSS Debugger Tool](https://greasyfork.org/en/scripts/445496-css-debugger-tool) in your Tampermonkey
 
 <br>
 
