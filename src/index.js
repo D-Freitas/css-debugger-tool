@@ -5,31 +5,36 @@ import DataConverter from './classes/data-converter'
 import Notifier from './classes/notifier'
 
 const lineDelimiters = new LineDelimiters(Events, States, DataConverter)
-const { runDebugger } = new States()
 const notifier = new Notifier()
 
 let isInitiated = false
+let pressedKeys = ''
+
+const notifierElement = document.getElementById('notifier')
+if (notifierElement === null) notifier.createNotifier()
 
 document.addEventListener('keypress', ({ key }) => {
-  if (key === ']' || key === 'c' || key === 'd' || key === 't') {
-    runDebugger[0] = key === ']' ? !runDebugger[0] : runDebugger[0]
-    runDebugger[1] = key === 'c' ? !runDebugger[1] : runDebugger[1]
-    runDebugger[2] = key === 'd' ? !runDebugger[2] : runDebugger[2]
-    runDebugger[3] = key === 't' ? !runDebugger[3] : runDebugger[3]
+  if ((!isInitiated && key === ']' && pressedKeys === '') ||
+      (!isInitiated && key === 'c' && pressedKeys === ']') ||
+      (!isInitiated && key === 'd' && pressedKeys === ']c') ||
+      (!isInitiated && key === 't' && pressedKeys === ']cd')) {
+    pressedKeys += key
+  }
 
-    if (document.getElementById('notifier') === null) {
-      notifier.createNotifier()
-    }
+  if (key === ']' && pressedKeys === ']cdt') pressedKeys = pressedKeys.slice(0, -1)
+  if (key === 'c' && pressedKeys === ']cd') pressedKeys = pressedKeys.slice(0, -1)
+  if (key === 'd' && pressedKeys === ']c') pressedKeys = pressedKeys.slice(0, -1)
+  if (key === 't' && pressedKeys === ']') pressedKeys = pressedKeys.slice(0, -1)
 
-    if (!runDebugger.includes(false) && !isInitiated) {
-      lineDelimiters.init()
-      notifier.showNotifier('CSS Debugger enabled')
-      isInitiated = true
-    }
-    if (!runDebugger.includes(true) && isInitiated) {
-      lineDelimiters.disable()
-      notifier.showNotifier('CSS Debugger disabled')
-      isInitiated = false
-    }
+  if (pressedKeys === ']cdt' && !isInitiated) {
+    lineDelimiters.init()
+    notifier.showNotifier('CSS Debugger enabled')
+    isInitiated = true
+  }
+
+  if (pressedKeys === '' && isInitiated) {
+    lineDelimiters.disable()
+    notifier.showNotifier('CSS Debugger disabled')
+    isInitiated = false
   }
 })
