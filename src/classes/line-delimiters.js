@@ -22,7 +22,7 @@ class LineDelimiters {
       element.onmouseover = element.onmouseleave = null
       const isElementShadow = element.style.boxShadow !== null
       const elementHasLine = this.colorsRgbaWithLine.includes(element.style.boxShadow)
-      if (isElementShadow && elementHasLine) { element.style.boxShadow = null }
+      if (isElementShadow && elementHasLine) element.style.boxShadow = null
     }
     this.states.runDebugger.forEach((state, i) => {
       this.states.runDebugger[i] = false
