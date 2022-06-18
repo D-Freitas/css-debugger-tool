@@ -1,9 +1,11 @@
-import LineDelimiters from './classes/line-delimiters'
-import Events from './classes/events'
-import DataConverter from './classes/data-converter'
-import Notifier from './classes/notifier'
+import Launcher from './launcher'
+import { DataConverter, ElementBringer, Notifier } from './utils'
+import Enabler from './triggers/enabler'
+import Disabler from './triggers/disabler'
+import Events from './executors/events'
+import { colors } from './constants/line-colors.json'
 
-const lineDelimiters = new LineDelimiters(Events, DataConverter)
+const launcher = new Launcher(DataConverter, Enabler, Disabler, ElementBringer, Events, colors)
 const notifier = new Notifier()
 
 let isInitiated = false
@@ -26,13 +28,13 @@ document.addEventListener('keypress', ({ key }) => {
   if (key === 't' && pressedKeys === ']') pressedKeys = pressedKeys.slice(0, -1)
 
   if (pressedKeys === ']cdt' && !isInitiated) {
-    lineDelimiters.enable()
+    launcher.enable()
     notifier.showNotifier('CSS Debugger enabled')
     isInitiated = true
   }
 
   if (pressedKeys === '' && isInitiated) {
-    lineDelimiters.disable()
+    launcher.disable()
     notifier.showNotifier('CSS Debugger disabled')
     isInitiated = false
   }
