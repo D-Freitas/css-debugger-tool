@@ -17,8 +17,18 @@ class LineDelimiters {
   }
 
   disable () {
+    this.#disableAssignedEvents()
+    this.#disableLineAroundElements()
+  }
+
+  #disableAssignedEvents () {
     for (const element of this.#bringPageElements()) {
       element.onmouseover = element.onmouseleave = null
+    }
+  }
+
+  #disableLineAroundElements () {
+    for (const element of this.#bringPageElements()) {
       const isElementShadow = element.style.boxShadow !== null
       const elementHasLine = this.colorsRgbaWithLine.includes(element.style.boxShadow)
       if (isElementShadow && elementHasLine) element.style.boxShadow = null
