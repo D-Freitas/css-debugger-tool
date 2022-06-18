@@ -26,7 +26,7 @@ document.addEventListener('keypress', ({ key }) => {
   if (key === 't' && pressedKeys === ']') pressedKeys = pressedKeys.slice(0, -1)
 
   if (pressedKeys === ']cdt' && !isInitiated) {
-    lineDelimiters.init()
+    lineDelimiters.enable()
     notifier.showNotifier('CSS Debugger enabled')
     isInitiated = true
   }

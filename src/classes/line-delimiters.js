@@ -10,7 +10,7 @@ class LineDelimiters {
     })
   }
 
-  init () {
+  enable () {
     this.#bringPageElements()
     this.#bringColors()
     this.#insertEventsToElements()
