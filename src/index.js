@@ -1,10 +1,9 @@
 import LineDelimiters from './classes/line-delimiters'
 import Events from './classes/events'
-import States from './classes/states'
 import DataConverter from './classes/data-converter'
 import Notifier from './classes/notifier'
 
-const lineDelimiters = new LineDelimiters(Events, States, DataConverter)
+const lineDelimiters = new LineDelimiters(Events, DataConverter)
 const notifier = new Notifier()
 
 let isInitiated = false

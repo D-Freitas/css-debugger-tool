@@ -1,10 +1,9 @@
 import { colors } from '../mocks/line-colors.json'
 
 class LineDelimiters {
-  constructor (Events, States, DataConverter) {
+  constructor (Events, DataConverter) {
     this.events = new Events()
     this.dataConverter = new DataConverter()
-    this.states = new States()
     this.colors = colors
     this.colorsRgbaWithLine = colors.map(color => {
       return `${this.dataConverter.convertHexToRgba(color)} 0px 0px 0px 4px`
@@ -24,9 +23,6 @@ class LineDelimiters {
       const elementHasLine = this.colorsRgbaWithLine.includes(element.style.boxShadow)
       if (isElementShadow && elementHasLine) element.style.boxShadow = null
     }
-    this.states.runDebugger.forEach((state, i) => {
-      this.states.runDebugger[i] = false
-    })
   }
 
   * #bringPageElements () {
