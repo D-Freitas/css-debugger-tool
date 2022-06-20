@@ -1,10 +1,11 @@
 /* eslint-disable quotes */
-let isInitiated = false
-let pressedKeys = ''
 
-describe("initializer", () => {
-  it("should be insert ']' in pressedKeys string if isInitiated is false and pressedKeys is empty string", () => {
-    function inserter (inputtedKey) {
+describe('initializer', () => {
+  let isInitiated = false
+  let pressedKeys = ''
+
+  it("should insert ']' in pressedKeys string if isInitiated is false and pressedKeys is empty string", () => {
+    function inserter (inputtedKey: string) {
       if (!isInitiated && pressedKeys === '') {
         pressedKeys += inputtedKey
       }
@@ -16,8 +17,8 @@ describe("initializer", () => {
     expect(keyInserted).toBe(']')
   })
 
-  it("should be insert 'c' in pressedKeys string if isInitiated is false and pressedKeys is ']'", () => {
-    function inserter (inputtedKey) {
+  it("should insert 'c' in pressedKeys string if isInitiated is false and pressedKeys is ']'", () => {
+    function inserter (inputtedKey: string) {
       if (!isInitiated && pressedKeys === ']') {
         pressedKeys += inputtedKey
       }
@@ -29,8 +30,8 @@ describe("initializer", () => {
     expect(keyInserted).toBe(']c')
   })
 
-  it("should be insert 'd' in pressedKeys string if isInitiated is false and pressedKeys is ']c'", () => {
-    function inserter (inputtedKey) {
+  it("should insert 'd' in pressedKeys string if isInitiated is false and pressedKeys is ']c'", () => {
+    function inserter (inputtedKey: string) {
       if (!isInitiated && pressedKeys === ']c') {
         pressedKeys += inputtedKey
       }
@@ -42,8 +43,8 @@ describe("initializer", () => {
     expect(keyInserted).toBe(']cd')
   })
 
-  it("should be insert 't' in pressedKeys string if isInitiated is false and pressedKeys is ']cd'", () => {
-    function inserter (inputtedKey) {
+  it("should insert 't' in pressedKeys string if isInitiated is false and pressedKeys is ']cd'", () => {
+    function inserter (inputtedKey: string) {
       if (!isInitiated && pressedKeys === ']cd') {
         pressedKeys += inputtedKey
       }
@@ -55,7 +56,7 @@ describe("initializer", () => {
     expect(keyInserted).toBe(']cdt')
   })
 
-  it("should be change modify initializer state to true if pressedKeys is ']cdt'", () => {
+  it("should change modify initializer state to true if pressedKeys is ']cdt'", () => {
     if (pressedKeys === ']cdt') {
       isInitiated = true
       expect(isInitiated).toBe(true)

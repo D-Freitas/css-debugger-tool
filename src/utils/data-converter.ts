@@ -1,5 +1,7 @@
-class DataConverter {
-  convertHexToRgba (value) {
+import { IDataConverter } from '@/protocols'
+
+export class DataConverter implements IDataConverter {
+  public convertHexToRgba (value: string): string {
     const hexValue = value.replace('#', '')
     const [r, g, b] = hexValue.match(/.{1,2}/g)
     const redToInt = parseInt(r, 16)
@@ -9,5 +11,3 @@ class DataConverter {
     return color
   }
 }
-
-export default DataConverter

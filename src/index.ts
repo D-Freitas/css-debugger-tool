@@ -1,11 +1,12 @@
-import Launcher from './launcher'
-import { DataConverter, ElementBringer, Notifier } from './utils'
-import Enabler from './triggers/enabler'
-import Disabler from './triggers/disabler'
+import Launcher from '@/launcher'
+import { DataConverter, ElementBringer, Notifier } from '@/utils'
+import { Enabler, Disabler } from '@/triggers'
 import Events from './executors/events'
 import { colors } from './constants/line-colors.json'
 
-const launcher = new Launcher(DataConverter, Enabler, Disabler, ElementBringer, Events, colors)
+const enabler = new Enabler(new ElementBringer(), new DataConverter(), new Events(), colors)
+const disabler = new Disabler(new ElementBringer(), new DataConverter(), colors)
+const launcher = new Launcher(enabler, disabler)
 const notifier = new Notifier()
 
 let isInitiated = false

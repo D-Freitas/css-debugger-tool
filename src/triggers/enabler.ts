@@ -1,12 +1,14 @@
-class Enabler {
-  constructor (ElementBringer, DataConverter, Events, colors) {
-    this.elementBringer = new ElementBringer()
-    this.dataConverter = new DataConverter()
-    this.events = new Events()
-    this.colors = colors
-  }
+import { IDataConverter, IElementBringer, IEnabler, IEvents } from '@/protocols'
 
-  bringColors () {
+export class Enabler implements IEnabler {
+  constructor (
+    private elementBringer: IElementBringer,
+    private dataConverter: IDataConverter,
+    private events: IEvents,
+    private colors: string[]
+  ) {}
+
+  public bringColors (): void {
     const elements = this.elementBringer.puller()
     let index = 0
     let colorIndex = 0
@@ -19,7 +21,7 @@ class Enabler {
     }
   }
 
-  insertEventsToElements () {
+  public insertEventsToElements (): void {
     let i = 0
 
     for (const element of this.elementBringer.puller()) {
@@ -31,5 +33,3 @@ class Enabler {
     }
   }
 }
-
-export default Enabler

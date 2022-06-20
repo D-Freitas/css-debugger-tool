@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
 /* eslint-disable quotes */
 describe("Data Converter", () => {
-  it("should be convert a hex color to rgba with 50% opacity", () => {
-    function convertHexToRgba (value) {
+  it("should convert a hex color to rgba with 50% opacity", () => {
+    function convertHexToRgba (value: string) {
       const hexValue = value.replace('#', '')
       const [r, g, b] = hexValue.match(/.{1,2}/g)
       const redToInt = parseInt(r, 16)

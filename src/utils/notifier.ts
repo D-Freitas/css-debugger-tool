@@ -1,7 +1,9 @@
-class Notifier {
+import { INotifier } from '@/protocols'
+
+export class Notifier implements INotifier {
   #notifier = document.createElement('div')
 
-  createNotifier () {
+  public createNotifier (): void {
     this.#notifier.id = 'notifier'
     const notifierStyle = {
       display: 'flex',
@@ -28,7 +30,7 @@ class Notifier {
     document.body.appendChild(this.#notifier)
   }
 
-  showNotifier (message) {
+  public showNotifier (message: string): void {
     const color = message === 'CSS Debugger enabled'
       ? '#18a558'
       : '#eb9c3c'
@@ -43,5 +45,3 @@ class Notifier {
     }, 2000)
   }
 }
-
-export default Notifier
