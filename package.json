@@ -2,7 +2,7 @@
   "name": "css-debugger",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/bundle.js",
   "scripts": {
     "test": "jest --passWithNoTests --no-cache --runInBand",
     "build": "esbuild src/index.ts --minify --bundle --sourcemap --outfile=dist/bundle.js",
