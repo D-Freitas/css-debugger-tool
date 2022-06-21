@@ -27,8 +27,14 @@ export class Enabler implements IEnabler {
     for (const element of this.elementBringer.puller()) {
       const lineColor = this.colors[i]
       const hexColor = this.dataConverter.convertHexToRgba(lineColor)
-      element.onmouseover = () => this.events.addLinesDelimiters(element, hexColor)
-      element.onmouseleave = () => this.events.removeLinesDelmiters(element, hexColor)
+      element.onmouseover = () => {
+        this.events.addLinesDelimiters(element, hexColor)
+        this.events.addElementSize(element, hexColor)
+      }
+      element.onmouseleave = () => {
+        this.events.removeLinesDelmiters(element, hexColor)
+        this.events.removeElementSize()
+      }
       i++
     }
   }

@@ -1,7 +1,7 @@
 import { IEnabler } from '@/protocols/enabler'
 import { IDisabler } from '@/protocols/disabler'
 
-class Launcher {
+export class Launcher {
   constructor (
     private enabler: IEnabler,
     private disabler: IDisabler,
@@ -15,7 +15,6 @@ class Launcher {
   public disable (): void {
     this.disabler.disableAssignedEvents()
     this.disabler.disableLineAroundElements()
+    this.disabler.disableElemenstSizeBox()
   }
 }
-
-export default Launcher

@@ -27,4 +27,9 @@ export class Disabler implements IDisabler {
       if (isElementShadow && elementHasLine) element.style.boxShadow = null
     }
   }
+
+  public disableElemenstSizeBox (): void {
+    const elementSizes = document.querySelectorAll('#css-debugger-tool_size-container')
+    Array.from(elementSizes).forEach(element => element.remove())
+  }
 }

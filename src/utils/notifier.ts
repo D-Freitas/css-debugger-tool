@@ -1,33 +1,14 @@
 import { INotifier } from '@/protocols'
+import { notifierContainerStyle } from '@/styles'
 
 export class Notifier implements INotifier {
-  #notifier = document.createElement('div')
+  notifier = document.createElement('div')
 
   public createNotifier (): void {
-    this.#notifier.id = 'notifier'
-    const notifierStyle = {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      position: 'fixed',
-      left: '50%',
-      top: '-53px',
-      fontWeight: 'bold',
-      fontSize: '16px',
-      textAlign: 'center',
-      transform: 'translateX(-50%)',
-      userSelect: 'none',
-      borderRadius: '10px',
-      background: 'rgba(0, 0, 0, .5)',
-      transition: 'top .5s',
-      width: '200px',
-      height: '50px',
-      zIndex: '999999'
-    }
-    Object.entries(notifierStyle).forEach(([key, value]) => {
-      this.#notifier.style[key] = value
-    })
-    document.body.appendChild(this.#notifier)
+    this.notifier.id = 'notifier'
+    const styles = notifierContainerStyle()
+    const notifierStyled = (this.notifier as any).customStyle(styles)
+    document.body.appendChild(notifierStyled)
   }
 
   public showNotifier (message: string): void {
@@ -35,13 +16,13 @@ export class Notifier implements INotifier {
       ? '#18a558'
       : '#eb9c3c'
 
-    this.#notifier.style.top = '8px'
-    this.#notifier.style.boxShadow = `0 0 0 4px ${color}`
-    this.#notifier.style.color = color
-    this.#notifier.innerText = message
+    this.notifier.style.top = '8px'
+    this.notifier.style.boxShadow = `0 0 0 4px ${color}`
+    this.notifier.style.color = color
+    this.notifier.innerText = message
 
     setTimeout(() => {
-      this.#notifier.style.top = '-60px'
+      this.notifier.style.top = '-60px'
     }, 2000)
   }
 }

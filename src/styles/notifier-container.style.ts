@@ -1,0 +1,20 @@
+export default (props?: any) => ({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  position: 'fixed',
+  left: '50%',
+  top: '-53px',
+  fontWeight: 'bold',
+  fontSize: '16px',
+  textAlign: 'center',
+  transform: 'translateX(-50%)',
+  userSelect: 'none',
+  borderRadius: '10px',
+  background: 'rgba(0, 0, 0, .5)',
+  transition: 'top .5s',
+  width: '200px',
+  height: '50px',
+  zIndex: '999999',
+  ...props
+})
