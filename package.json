@@ -1,7 +1,7 @@
 {
   "name": "css-debugger",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple tool to debug UIs",
   "main": "dist/bundle.js",
   "scripts": {
     "test": "jest --passWithNoTests --no-cache --runInBand",
