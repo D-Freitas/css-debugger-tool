@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --passWithNoTests --no-cache --runInBand",
     "build": "esbuild src/index.ts --minify --bundle --sourcemap --outfile=dist/bundle.js",
-    "lint": "eslint src/",
+    "lint": "eslint",
     "lint:fix": "npm run lint -- --fix",
     "prepare": "husky install"
   },
