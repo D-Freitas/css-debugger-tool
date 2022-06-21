@@ -1,4 +1,4 @@
 export interface INotifier {
-  createNotifier(): void 
+  createNotifier(): void
   showNotifier(message: string): void
 }

@@ -18,15 +18,15 @@ export class Events implements IEvents {
         sizeContainer === null) {
       this.widthSize = element.offsetWidth
       this.heightSize = element.offsetHeight
-      
+
       const sizeContainer = document.createElement('div')
       sizeContainer.id = 'css-debugger-tool_size-container'
-      
+
       const stylesProps = {
         border: `3px dashed ${color}`,
         color
       }
-      const styles = sizeContainerStyle(stylesProps) 
+      const styles = sizeContainerStyle(stylesProps)
       const sizeContainerStyled = (sizeContainer as any).customStyle(styles)
 
       sizeContainer.innerHTML = `

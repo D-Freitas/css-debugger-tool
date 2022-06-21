@@ -4,7 +4,7 @@ import { IDisabler } from '@/protocols/disabler'
 export class Launcher {
   constructor (
     private enabler: IEnabler,
-    private disabler: IDisabler,
+    private disabler: IDisabler
   ) {}
 
   public enable (): void {
