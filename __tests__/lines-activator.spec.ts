@@ -1,6 +1,6 @@
 /* eslint-disable quotes */
 
-describe('initializer', () => {
+describe('Lines Initializer', () => {
   let isInitiated = false
   let pressedKeys = ''
 

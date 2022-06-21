@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable quotes */
 
-describe('deactivator', () => {
+describe('Lines Deactivator', () => {
   let isInitiated = true
   let pressedKeys = ']cdt'
 
