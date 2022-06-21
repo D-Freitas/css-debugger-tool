@@ -1,8 +1,10 @@
-import Launcher from '@/launcher'
-import { DataConverter, ElementBringer, Notifier } from '@/utils'
+import '@/globals/custom-prototypes'
+
+import { Launcher } from '@/launcher'
+import { Events } from '@/executors'
+import { colors } from '@/constants'
 import { Enabler, Disabler } from '@/triggers'
-import Events from './executors/events'
-import { colors } from './constants/line-colors.json'
+import { ElementBringer, DataConverter, Notifier } from '@/utils'
 
 const enabler = new Enabler(new ElementBringer(), new DataConverter(), new Events(), colors)
 const disabler = new Disabler(new ElementBringer(), new DataConverter(), colors)
