@@ -1,5 +1,5 @@
 # CSS Debugger Tool
-![demo](https://user-images.githubusercontent.com/47615360/170153445-336082ad-2c6a-42de-a561-ad1794d7ae90.gif)
+![demo](https://user-images.githubusercontent.com/47615360/175610500-b914910f-390a-43ad-88be-7714b9282f66.gif)
 <br>
 
 ## How to install?
