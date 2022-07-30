@@ -24,6 +24,7 @@ export class Events implements IEvents {
 
       const stylesProps = {
         border: `3px dashed ${color}`,
+        background: '#222',
         color
       }
       const styles = sizeContainerStyle(stylesProps)
