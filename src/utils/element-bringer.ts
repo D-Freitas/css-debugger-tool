@@ -1,10 +1,14 @@
 import { IElementBringer } from '@/protocols'
 
 export class ElementBringer implements IElementBringer {
-  public * puller (): Generator<HTMLElement> {
-    const elementsFromBody: NodeListOf<HTMLElement> = document.body.querySelectorAll('*')
-    for (const element of elementsFromBody) {
-      yield element
+  public puller (): NodeListOf<HTMLElement> {
+    document.body[Symbol.iterator] = function * () {
+      const nodes = this.querySelectorAll('*')
+      for (const node of nodes) {
+        yield node
+      }
     }
+    const elementsFromBody: NodeListOf<HTMLElement> = document.body.querySelectorAll('*')
+    return elementsFromBody
   }
 }

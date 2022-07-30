@@ -1,3 +1,3 @@
 export interface IElementBringer {
-  puller (): Generator<HTMLElement>
+  puller (): NodeListOf<HTMLElement>
 }

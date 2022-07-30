@@ -13,7 +13,7 @@ export class Enabler implements IEnabler {
     let index = 0
     let colorIndex = 0
 
-    while (typeof elements.next().value !== 'undefined') {
+    while (index <= elements.length) {
       if (colorIndex >= this.colors.length) colorIndex = 0
       this.colors[index] = this.colors[colorIndex]
       index++
