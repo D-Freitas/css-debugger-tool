@@ -10,7 +10,7 @@
     "lint:fix": "npm run lint -- --fix",
     "prepare": "husky install"
   },
-  "keywords": [],
+  "keywords": ["debugger", "css debugger tool", "sass", "styled components", "react", "next", "frontend"],
   "author": "",
   "license": "ISC",
   "devDependencies": {
