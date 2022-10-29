@@ -12,7 +12,7 @@
 - `npm i` or `yarn`<br>
   - Install dependencies
   - In case you are using yarn, just run the yarn command
-  - Press keys `] + c + d + t` to enable and disable
+  - Press keys <kbd>]</kbd> + <kbd>c</kbd> + <kbd>d</kbd> + <kbd>t</kbd> to enable and disable
 - `npm run build`<br>
   - This will generate a bundle
   - Just copy the bundle code and insert it into your [Tampermonkey](https://www.tampermonkey.net/)
